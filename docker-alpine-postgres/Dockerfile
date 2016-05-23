@@ -1,9 +1,7 @@
 FROM alpine
 
-RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
-    apk update && apk add curl postgresql postgresql-contrib su-exec && \
+RUN apk update && apk add postgresql postgresql-contrib su-exec && \
     mkdir /docker-entrypoint-initdb.d && \
-    apk del curl && \
     rm -rf /var/cache/apk/*
 
 ENV LANG en_US.utf8
